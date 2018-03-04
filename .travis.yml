@@ -1,0 +1,17 @@
+after_script:
+  - docker images
+
+before_script:
+  - cd "$VERSION"
+  - IMAGE="viacoin-core:${VERSION}"
+
+env:
+  - VERSION=v0.13.3.7
+
+language: bash
+
+script:
+  - docker build -t "$IMAGE" .
+  - docker run "$IMAGE" --version | grep "Viacoin Core"
+
+services: docker

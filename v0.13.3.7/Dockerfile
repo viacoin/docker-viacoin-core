@@ -27,8 +27,7 @@ RUN curl -o /usr/local/bin/gosu -fSL https://github.com/tianon/gosu/releases/dow
 ENV VIACOIN_VERSION=v0.13.3.7
 ENV VIACOIN_DATA=/home/viacoin/.viacoin
 
-RUN curl -O https://download.viacoin.org/viacoin-${VIACOIN_VERSION}/linux/viacoin-${VIACOIN_VERSION}-x86_64-linux-gnu.tar.gz \
-  && curl https://download.viacoin.org/viacoin-${VIACOIN_VERSION}/linux/viacoin-${VIACOIN_VERSION}-linux-signatures.asc | gpg --verify - \
+RUN curl -O https://github.com/viacoin/viacoin/releases/download/v0.13.3.7/viacoin-0.13.3-x86_64-linux-gnu.tar.gz \
   && tar --strip=2 -xzf *.tar.gz -C /usr/local/bin \
   && rm *.tar.gz
 

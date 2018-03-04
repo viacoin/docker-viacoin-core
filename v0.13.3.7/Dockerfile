@@ -28,7 +28,11 @@ ENV VIACOIN_VERSION=v0.13.3.7
 ENV VIACOIN_DATA=/home/viacoin/.viacoin
 
 RUN curl -O https://github.com/viacoin/viacoin/releases/download/v0.13.3.7/viacoin-0.13.3-x86_64-linux-gnu.tar.gz \
-  && tar --strip=2 -xzf *.tar.gz -C /usr/local/bin \
+  && tar -xvzf viacoin-0.13.3-x86_64-linux-gnu.tar.gz \
+  && cd viacoin-0.13.3-x86_64-linux-gnu\viacoin-0.13.3\bin \
+  && cp viacoind /usr/bin/viacoind \
+  && cp viacoin-cli /usr/bin/viacoin-cli \
+  && cd \
   && rm *.tar.gz
 
 COPY docker-entrypoint.sh /entrypoint.sh
